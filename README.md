@@ -2,11 +2,11 @@
 
 > *"Because every developer deserves a second pair of eyes"*
 
-Built with ❤️ by **TwinCoders** - A story of innovation, challenges, and smart solutions.
+Built with ❤️  - A story of innovation, challenges, and smart solutions.
 
 ## 🌟 Our Story
 
-At **TwinCoders**, we faced a common but frustrating challenge: 
+At **Our Development Team**, we faced a common but frustrating challenge: 
 
 **The Problem** 💔
 - Code reviews were taking forever
@@ -78,7 +78,7 @@ During a late-night debugging session, our team realized: *"What if we had an AI
 
 ### **Step 1: Get the Code**
 ```bash
-git clone https://github.com/twincoders/codetwin-bot.git
+git clone https://github.com/mirzaaghazadeh/codetwin-bot.git
 cd codetwin-bot
 ```
 
@@ -86,12 +86,12 @@ cd codetwin-bot
 Copy `config.example.php` to `config.php` and fill in:
 ```php
 // Your GitLab server
-define('GITLAB_URL', 'https://git.twincoders.dev');
+define('GITLAB_URL', 'https://yourgitlab.com');
 define('GITLAB_ACCESS_TOKEN', 'your-token-here');
 
 // OpenAI settings
 define('OPENAI_API_KEY', 'your-openai-key');
-define('OPENAI_MODEL', 'gpt-4o-mini');
+define('OPENAI_MODEL', 'gpt-4.1-nano');
 
 // Security
 define('WEBHOOK_SECRET_TOKEN', 'your-secret-token');
@@ -129,7 +129,7 @@ Users can now log in with email/password and stay logged in for 24 hours.
 The system also tracks login attempts for security.
 
 ---
-*Automated review by CodeTwin 🤖*
+*Automated review by [CodeTwin](https://github.com/mirzaaghazadeh/CodeTwin) 🤖*
 ```
 
 **Comment 2: Technical Code Review**
@@ -156,7 +156,7 @@ The system also tracks login attempts for security.
 - Integration tests for login flow recommended
 
 ---
-*Automated review by CodeTwin 🤖*
+*Automated review by [CodeTwin](https://github.com/mirzaaghazadeh/CodeTwin) 🤖*
 ```
 
 **Comment 3: Security Check**
@@ -170,7 +170,7 @@ The system also tracks login attempts for security.
 ✅ Session management looks secure
 
 ---
-*Automated review by CodeTwin 🤖*
+*Automated review by [CodeTwin](https://github.com/mirzaaghazadeh/CodeTwin) 🤖*
 ```
 
 **Comment 4: Questions (only when needed)**
@@ -182,15 +182,14 @@ Should we add two-factor authentication support?
 Is the password complexity requirement sufficient?
 
 ---
-*Please clarify these points - CodeTwin 🤖*
+*Please clarify these points - [CodeTwin](https://github.com/mirzaaghazadeh/CodeTwin) 🤖*
 ```
 
 ## ⚙️ Fine-Tuning CodeTwin
 
 ### **Make It Yours**
 ```php
-// Bot identity
-define('BOT_NAME', 'CodeTwin');              // Change the name
+// Bot behavior
 define('SKIP_COMMENT_IF_EXISTS', true);      // Avoid spam
 
 // Analysis limits (adjust for your team)
@@ -201,7 +200,7 @@ define('MAX_FILES_TO_ANALYZE', 20);         // Files per MR
 ### **Choose Your AI Model**
 ```php
 // Cost vs Quality trade-off
-define('OPENAI_MODEL', 'gpt-4o-mini');     // Fast and cheap
+define('OPENAI_MODEL', 'gpt-4.1-nano');     // Fast and cheap
 // define('OPENAI_MODEL', 'gpt-4');        // Slower but smarter
 ```
 
@@ -231,7 +230,7 @@ Replace `123` with your project ID and `45` with a merge request number.
 **🔴 OpenAI Problems**
 - Valid API key? (Check OpenAI dashboard)
 - Got credits? (AI isn't free!)
-- Model name correct? (gpt-4o-mini, not gpt-4o)
+- Model name correct? (gpt-4.1-nano)
 
 **🔴 Webhook Silent Treatment**
 - URL accessible from GitLab?
@@ -277,8 +276,7 @@ codetwin-bot/
 ## 💰 Cost Reality Check
 
 **OpenAI API isn't free, but it's cheap:**
-- **gpt-4o-mini**: ~$0.001 per 1K tokens (our choice)
-- **gpt-4**: ~$0.03 per 1K tokens (premium option)
+- **gpt-4.1-nano**: ~$0.40 per 1M tokens (our choice)
 
 **Real numbers:** Most merge requests cost $0.01-$0.05 to analyze. For a team of 5 developers, expect ~$10-20/month.
 

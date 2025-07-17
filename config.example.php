@@ -8,7 +8,7 @@ define('GITLAB_ACCESS_TOKEN', 'glpat-xxxxxxxxxxxxxxxxxxxx'); // GitLab Personal 
 
 // OpenAI Configuration
 define('OPENAI_API_KEY', 'sk-xxxxxxxxxxxxxxxxxxxx'); // Your OpenAI API key
-define('OPENAI_MODEL', 'gpt-4'); // Model to use: 'gpt-4' or 'gpt-3.5-turbo'
+define('OPENAI_MODEL', 'gpt-4.1-nano'); // or 'gpt-3.5-turbo' for cost efficiency
 
 // Webhook Security (recommended)
 define('WEBHOOK_SECRET_TOKEN', 'your-secure-random-token-here'); // Generate a secure random token
@@ -18,7 +18,6 @@ define('MAX_DIFF_SIZE', 10000); // Maximum characters in diff to analyze (adjust
 define('MAX_FILES_TO_ANALYZE', 20); // Maximum number of files to analyze in one MR
 
 // Bot Settings
-define('BOT_NAME', 'Code Review Bot'); // Name that appears in comments
 define('SKIP_COMMENT_IF_EXISTS', true); // Skip analysis if bot already commented on this MR
 
 /*

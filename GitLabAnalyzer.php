@@ -110,7 +110,7 @@ class GitLabAnalyzer {
         if (!$notes) return false;
         
         foreach ($notes as $note) {
-            if (stripos($note['body'], BOT_NAME) !== false) {
+            if (stripos($note['body'], 'CodeTwin') !== false) {
                 return true;
             }
         }
@@ -255,7 +255,7 @@ class GitLabAnalyzer {
         if (!empty($sections['business_logic'])) {
             $comment = "# 📋 Business Logic Review\n\n";
             $comment .= $sections['business_logic'];
-            $comment .= "\n\n---\n*Automated review by " . BOT_NAME . " 🤖*";
+            $comment .= "\n\n---\n*Automated review by [CodeTwin](https://github.com/mirzaaghazadeh/CodeTwin) 🤖*";
             
             $results['business'] = $this->postSingleComment($projectId, $mergeRequestIid, $comment);
         }
@@ -264,7 +264,7 @@ class GitLabAnalyzer {
         if (!empty($sections['technical_review'])) {
             $comment = "# 👥 Technical Code Review\n\n";
             $comment .= $sections['technical_review'];
-            $comment .= "\n\n---\n*Automated review by " . BOT_NAME . " 🤖*";
+            $comment .= "\n\n---\n*Automated review by [CodeTwin](https://github.com/mirzaaghazadeh/CodeTwin) 🤖*";
             
             $results['technical'] = $this->postSingleComment($projectId, $mergeRequestIid, $comment);
         }
@@ -273,7 +273,7 @@ class GitLabAnalyzer {
         if (!empty($sections['security_check'])) {
             $comment = "# 🔒 Security Check\n\n";
             $comment .= $sections['security_check'];
-            $comment .= "\n\n---\n*Automated review by " . BOT_NAME . " 🤖*";
+            $comment .= "\n\n---\n*Automated review by [CodeTwin](https://github.com/mirzaaghazadeh/CodeTwin) 🤖*";
             
             $results['security'] = $this->postSingleComment($projectId, $mergeRequestIid, $comment);
         }
@@ -282,7 +282,7 @@ class GitLabAnalyzer {
         if (!empty($sections['quick_summary'])) {
             $comment = "# 💡 Quick Summary\n\n";
             $comment .= $sections['quick_summary'];
-            $comment .= "\n\n---\n*Automated review by " . BOT_NAME . " 🤖*";
+            $comment .= "\n\n---\n*Automated review by [CodeTwin](https://github.com/mirzaaghazadeh/CodeTwin) 🤖*";
             
             $results['summary'] = $this->postSingleComment($projectId, $mergeRequestIid, $comment);
         }
@@ -291,7 +291,7 @@ class GitLabAnalyzer {
         if (!empty($sections['questions']) && trim($sections['questions']) !== 'NONE') {
             $comment = "# ❓ Questions for @" . $authorUsername . "\n\n";
             $comment .= $sections['questions'];
-            $comment .= "\n\n---\n*Please clarify these points - " . BOT_NAME . " 🤖*";
+            $comment .= "\n\n---\n*Please clarify these points - [CodeTwin](https://github.com/mirzaaghazadeh/CodeTwin) 🤖*";
             
             $results['questions'] = $this->postSingleComment($projectId, $mergeRequestIid, $comment);
         }

@@ -11,7 +11,7 @@ echo "   GitLab URL: " . GITLAB_URL . "\n";
 echo "   GitLab Token: " . (GITLAB_ACCESS_TOKEN ? "Set (" . substr(GITLAB_ACCESS_TOKEN, 0, 8) . "...)" : "NOT SET") . "\n";
 echo "   OpenAI Key: " . (OPENAI_API_KEY ? "Set (" . substr(OPENAI_API_KEY, 0, 8) . "...)" : "NOT SET") . "\n";
 echo "   OpenAI Model: " . OPENAI_MODEL . "\n";
-echo "   Bot Name: " . BOT_NAME . "\n\n";
+echo "   Bot Name: CodeTwin\n\n";
 
 // Test GitLab API connection
 echo "2. Testing GitLab API Connection:\n";
