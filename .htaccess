@@ -1,0 +1,38 @@
+# Security settings for GitLab MR Bot
+
+# Hide sensitive files
+<Files "config.php">
+    Require all denied
+</Files>
+
+<Files "test.php">
+    Require all denied
+</Files>
+
+<Files "GitLabAnalyzer.php">
+    Require all denied
+</Files>
+
+# Only allow access to webhook.php from external requests
+# You may want to restrict this further to GitLab IPs only
+
+# Disable directory browsing
+Options -Indexes
+
+# Hide .htaccess file
+<Files ".htaccess">
+    Require all denied
+</Files>
+
+# Optional: Set proper headers for webhook endpoint
+<Files "webhook.php">
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+</Files>
+
+# Optional: Restrict access to webhook.php by IP (uncomment and adjust)
+# <Files "webhook.php">
+#     Require ip 192.168.1.0/24
+#     Require ip your.gitlab.server.ip
+# </Files> 
