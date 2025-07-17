@@ -252,7 +252,7 @@ ini_set('display_errors', 1);
 
 ## 🔒 Security (We Take This Seriously)
 
-At **TwinCoders**, we learned security the hard way. Here's what we recommend:
+At **Our Development Team**, we learned security the hard way. Here's what we recommend:
 
 - **HTTPS only** for webhook endpoints
 - **Secret tokens** to prevent unauthorized requests  
@@ -291,31 +291,6 @@ codetwin-bot/
 - Max 10,000 characters per diff
 - Smart truncation when needed
 
-## 🤝 Join The TwinCoders Community
-
-Found a bug? Want to add a feature? We'd love your help!
-
-1. **Fork** the repository
-2. **Create** a feature branch
-3. **Test** your changes thoroughly
-4. **Submit** a pull request with a clear description
-
-### **Current Contributors**
-- The **TwinCoders** team (that's us!)
-- Future contributors (that could be you!)
-
-## 📞 Get Help
-
-**Stuck? We've been there.**
-
-1. **Check** the troubleshooting section above
-2. **Run** `php test.php` to diagnose issues
-3. **Review** your server logs
-4. **Create** an issue on GitHub with:
-   - Error messages
-   - Your configuration (without API keys!)
-   - Steps to reproduce
-
 ## 📜 License
 
 MIT License - Use it, modify it, share it. Just don't blame us if your code reviews become too good! 😄
@@ -330,4 +305,4 @@ Happy coding! 🚀
 
 ---
 
-*Built with ❤️ by **TwinCoders** - Making code reviews less painful, one merge request at a time.* 
+*Built with ❤️ - Making code reviews less painful, one merge request at a time.* 
