@@ -129,7 +129,7 @@ Users can now log in with email/password and stay logged in for 24 hours.
 The system also tracks login attempts for security.
 
 ---
-*Automated review by [CodeTwin](https://github.com/mirzaaghazadeh/CodeTwin) 🤖*
+*Automated review by CodeTwin 🤖*
 ```
 
 **Comment 2: Technical Code Review**
@@ -156,7 +156,7 @@ The system also tracks login attempts for security.
 - Integration tests for login flow recommended
 
 ---
-*Automated review by [CodeTwin](https://github.com/mirzaaghazadeh/CodeTwin) 🤖*
+*Automated review by CodeTwin 🤖*
 ```
 
 **Comment 3: Security Check**
@@ -170,7 +170,7 @@ The system also tracks login attempts for security.
 ✅ Session management looks secure
 
 ---
-*Automated review by [CodeTwin](https://github.com/mirzaaghazadeh/CodeTwin) 🤖*
+*Automated review by CodeTwin 🤖*
 ```
 
 **Comment 4: Questions (only when needed)**
@@ -182,7 +182,7 @@ Should we add two-factor authentication support?
 Is the password complexity requirement sufficient?
 
 ---
-*Please clarify these points - [CodeTwin](https://github.com/mirzaaghazadeh/CodeTwin) 🤖*
+*Please clarify these points - CodeTwin 🤖*
 ```
 
 ## ⚙️ Fine-Tuning CodeTwin
