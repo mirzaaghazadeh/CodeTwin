@@ -29,16 +29,23 @@ During a late-night debugging session, our team realized: *"What if we had an AI
 
 **CodeTwin** - Our AI-powered code review assistant that gives you:
 
-### 📋 **4 Types of Reviews**
+### 📋 **5 Types of Reviews**
 1. **Business Logic Review** - What changed from a business perspective
 2. **Technical Code Review** - Deep technical analysis like a senior developer
-3. **Security Check** - Focused security concerns and vulnerabilities  
-4. **Quick Summary** - TL;DR of the changes
+3. **Clean Code Analysis** - Dedicated clean code check (CRITICAL for merge approval)
+4. **Security Check** - Focused security concerns and vulnerabilities  
+5. **Quick Summary** - TL;DR of the changes
 
 ### 🎯 **Smart Question System**
 - Only asks questions when there are real issues
 - Directly mentions the author for important clarifications
 - No spam - only when needed!
+
+### 🧹 **Clean Code Enforcer**
+- **CRITICAL FEATURE**: Dedicated clean code analysis
+- Clear ratings: ✅ CLEAN, ⚠️ NEEDS IMPROVEMENT, ❌ NOT CLEAN
+- Checks naming conventions, function complexity, DRY principle, SOLID principles
+- **No merge without clean code** - helps maintain code quality standards
 
 ## 🛠️ The Technical Journey
 
@@ -60,8 +67,13 @@ During a late-night debugging session, our team realized: *"What if we had an AI
 - *Problem*: Formal, robotic language
 - *Solution*: Friendly, conversational tone that helps teams learn
 
+**Challenge #5: Inconsistent Code Quality**
+- *Problem*: Different developers had different coding standards
+- *Solution*: Dedicated clean code analysis with clear ratings and actionable feedback
+
 ## 🎯 What Makes CodeTwin Special
 
+- **Clean Code Enforcer**: Dedicated clean code analysis with clear ratings (✅ CLEAN, ⚠️ NEEDS IMPROVEMENT, ❌ NOT CLEAN)
 - **Separate Comments**: Each review type gets its own comment
 - **Context-Aware**: Understands business logic, not just code syntax
 - **Educational**: Helps junior developers learn best practices
@@ -159,7 +171,34 @@ The system also tracks login attempts for security.
 *Automated review by CodeTwin 🤖*
 ```
 
-**Comment 3: Security Check**
+**Comment 3: Clean Code Analysis**
+```
+# 🧹 Clean Code Analysis
+
+## Clean Code Rating: ⚠️ NEEDS IMPROVEMENT
+
+## Issues Found:
+- Function `processUserData()` is too long (85 lines) - should be under 20 lines
+- Variable names like `$d`, `$tmp` are not descriptive
+- Magic number `3600` should be a named constant
+- Code duplication in validation logic (lines 45-52 and 78-85)
+
+## Good Practices:
+✅ Proper error handling implemented
+✅ Consistent indentation and formatting
+✅ Good use of type hints
+
+## Required Changes Before Merge:
+1. Break down large functions into smaller ones
+2. Use descriptive variable names
+3. Extract magic numbers to constants
+4. Remove code duplication
+
+---
+*Automated review by CodeTwin 🤖*
+```
+
+**Comment 4: Security Check**
 ```
 # 🔒 Security Check
 
@@ -173,7 +212,7 @@ The system also tracks login attempts for security.
 *Automated review by CodeTwin 🤖*
 ```
 
-**Comment 4: Questions (only when needed)**
+**Comment 5: Questions (only when needed)**
 ```
 # ❓ Questions for @developer
 

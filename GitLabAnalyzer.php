@@ -128,14 +128,14 @@ class GitLabAnalyzer {
             'messages' => [
                 [
                     'role' => 'system',
-                    'content' => 'You are a friendly code review assistant. Analyze merge request changes and provide feedback in separate sections: business logic review, comprehensive technical code review, security check, quick summary, and questions if needed. Use simple, easy English. Be helpful and friendly, not overly formal. Make the technical review thorough like a real senior developer would do.'
+                    'content' => 'You are a friendly code review assistant with a strong focus on CLEAN CODE. Analyze merge request changes and provide feedback in separate sections: business logic review, comprehensive technical code review, dedicated clean code analysis, security check, quick summary, and questions if needed. CLEAN CODE is CRITICAL - code that is not clean should NOT be merged. Use simple, easy English. Be helpful and friendly, not overly formal. Make the technical review thorough like a real senior developer would do.'
                 ],
                 [
                     'role' => 'user',
                     'content' => $prompt
                 ]
             ],
-            'max_tokens' => 2500,
+            'max_tokens' => 3000,
             'temperature' => 0.2
         ];
         
@@ -211,6 +211,7 @@ class GitLabAnalyzer {
         
         $prompt .= "TECHNICAL_REVIEW:\n";
         $prompt .= "Complete technical code review like a real senior developer would do. Include:\n";
+        $prompt .= "- **CLEAN CODE ANALYSIS** (VERY IMPORTANT): Check for naming conventions, function lengths, code complexity, DRY principle, SOLID principles, proper commenting, and overall code cleanliness\n";
         $prompt .= "- Code structure and architecture changes\n";
         $prompt .= "- Code quality, patterns, and best practices\n";
         $prompt .= "- Potential bugs or issues\n";
@@ -218,7 +219,22 @@ class GitLabAnalyzer {
         $prompt .= "- Testing considerations\n";
         $prompt .= "- Maintainability and readability\n";
         $prompt .= "- Specific file and line feedback where relevant\n";
-        $prompt .= "Be thorough but keep it easy to understand.\n\n";
+        $prompt .= "Be thorough but keep it easy to understand. CLEAN CODE is a top priority - if code is not clean, mention it clearly.\n\n";
+        
+        $prompt .= "---SECTION---\n\n";
+        
+        $prompt .= "CLEAN_CODE_CHECK:\n";
+        $prompt .= "Dedicated clean code analysis (CRITICAL for merge approval):\n";
+        $prompt .= "- Function and variable naming (clear, descriptive, consistent)\n";
+        $prompt .= "- Function length and complexity (too long/complex functions)\n";
+        $prompt .= "- Code duplication (DRY principle violations)\n";
+        $prompt .= "- SOLID principles adherence\n";
+        $prompt .= "- Proper commenting and documentation\n";
+        $prompt .= "- Code formatting and consistency\n";
+        $prompt .= "- Magic numbers and hardcoded values\n";
+        $prompt .= "- Dead code or unused imports\n";
+        $prompt .= "Give a clear CLEAN CODE RATING: ✅ CLEAN, ⚠️ NEEDS IMPROVEMENT, or ❌ NOT CLEAN\n";
+        $prompt .= "If not clean, specify what needs to be fixed before merge.\n\n";
         
         $prompt .= "---SECTION---\n\n";
         
@@ -269,7 +285,16 @@ class GitLabAnalyzer {
             $results['technical'] = $this->postSingleComment($projectId, $mergeRequestIid, $comment);
         }
         
-        // 3. Security Check
+        // 3. Clean Code Check
+        if (!empty($sections['clean_code_check'])) {
+            $comment = "# 🧹 Clean Code Analysis\n\n";
+            $comment .= $sections['clean_code_check'];
+            $comment .= "\n\n---\n*Automated review by [CodeTwin](https://github.com/mirzaaghazadeh/CodeTwin) 🤖*";
+            
+            $results['clean_code'] = $this->postSingleComment($projectId, $mergeRequestIid, $comment);
+        }
+        
+        // 4. Security Check
         if (!empty($sections['security_check'])) {
             $comment = "# 🔒 Security Check\n\n";
             $comment .= $sections['security_check'];
@@ -278,7 +303,7 @@ class GitLabAnalyzer {
             $results['security'] = $this->postSingleComment($projectId, $mergeRequestIid, $comment);
         }
         
-        // 4. Quick Summary
+        // 5. Quick Summary
         if (!empty($sections['quick_summary'])) {
             $comment = "# 💡 Quick Summary\n\n";
             $comment .= $sections['quick_summary'];
@@ -287,7 +312,7 @@ class GitLabAnalyzer {
             $results['summary'] = $this->postSingleComment($projectId, $mergeRequestIid, $comment);
         }
         
-        // 5. Questions (separate comment, only if needed)
+        // 6. Questions (separate comment, only if needed)
         if (!empty($sections['questions']) && trim($sections['questions']) !== 'NONE') {
             $comment = "# ❓ Questions for @" . $authorUsername . "\n\n";
             $comment .= $sections['questions'];
@@ -315,6 +340,8 @@ class GitLabAnalyzer {
                 $sections['business_logic'] = trim(str_replace('BUSINESS_LOGIC:', '', $part));
             } elseif (strpos($part, 'TECHNICAL_REVIEW:') === 0) {
                 $sections['technical_review'] = trim(str_replace('TECHNICAL_REVIEW:', '', $part));
+            } elseif (strpos($part, 'CLEAN_CODE_CHECK:') === 0) {
+                $sections['clean_code_check'] = trim(str_replace('CLEAN_CODE_CHECK:', '', $part));
             } elseif (strpos($part, 'SECURITY_CHECK:') === 0) {
                 $sections['security_check'] = trim(str_replace('SECURITY_CHECK:', '', $part));
             } elseif (strpos($part, 'QUICK_SUMMARY:') === 0) {
